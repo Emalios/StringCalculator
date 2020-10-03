@@ -32,4 +32,9 @@ public class TestCalculator {
         assertThat(this.calculator.add("1\n1")).isEqualTo("2");
     }
 
+    @Test
+    public void test() {
+        System.out.println(this.calculator.add("1,1,"));
+    }
+
 }
