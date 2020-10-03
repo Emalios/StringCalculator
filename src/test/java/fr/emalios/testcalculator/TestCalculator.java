@@ -16,8 +16,20 @@ public class TestCalculator {
     }
 
     @Test
-    public void test_with_one_string() {
-        assertThat(this.calculator.add("1, 1")).isEqualTo("2");
+    public void test_with_one_or_two_or_three_number() {
+        assertThat(this.calculator.add("")).isEqualTo("0");
+        assertThat(this.calculator.add("1,1")).isEqualTo("2");
+        assertThat(this.calculator.add("1,1,3")).isEqualTo("5");
+    }
+
+    @Test
+    public void test_with_unknown_numbers() {
+        assertThat(this.calculator.add("1,1,1,1,1,1")).isEqualTo("6");
+    }
+
+    @Test
+    public void test_with_newline_as_separator() {
+        assertThat(this.calculator.add("1\n1")).isEqualTo("2");
     }
 
 }
