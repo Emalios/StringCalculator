@@ -1,9 +1,7 @@
 package fr.emalios.calculator;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class Calculator {
 
@@ -46,7 +44,7 @@ public class Calculator {
         }
         if (number.contains("-")){
             if (error.length()>0) error.append("\n");
-            error.append(DetectNegative(number));
+            error.append(detectNegative(number));
         }
         if (number.contains(",,")){
             if (error.length()>0) error.append("\n");
@@ -55,7 +53,7 @@ public class Calculator {
         return error.toString();
     }
 
-    private String DetectNegative(String number){
+    private String detectNegative(String number){
         String numberVal = number;
         StringBuilder result= new StringBuilder();
         int index=0;
