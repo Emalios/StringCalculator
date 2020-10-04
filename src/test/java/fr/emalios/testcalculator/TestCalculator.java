@@ -37,4 +37,32 @@ public class TestCalculator {
         System.out.println(this.calculator.add("1,1,"));
     }
 
+    @Test
+    public void test_invalid_newLine(){
+        assertThat(this.calculator.add("172,\n35")).containsIgnoringCase("Number expected but '\\n' found at position");
+    }
+
+    @Test
+    public void test_invalid_EOF(){
+        assertThat(this.calculator.add("1,3,")).containsIgnoringCase("Number expected but EOF found.");
+    }
+
+    @Test
+    public void test_negative(){
+        assertThat(this.calculator.add("2,-4,-5")).containsIgnoringCase("Negative not allowed : -4, -5");
+    }
+
+    @Test
+    public void test_multiple_error(){
+        assertThat(this.calculator.add("-1,,2"))
+                .isEqualToIgnoringCase("Negative not allowed : -1\nNumber expected but ',' found at position 3");
+    }
+
+    @Test
+    public void test_custome_separator(){
+        assertThat(this.calculator.add("//;\n1;2")).isEqualToIgnoringCase("3");
+        assertThat(this.calculator.add("//sep\n2sep3")).isEqualToIgnoringCase("5");
+        assertThat(this.calculator.add("//|\n1|2|3")).isEqualToIgnoringCase("6");
+    }
+
 }
