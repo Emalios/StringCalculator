@@ -59,7 +59,7 @@ public class TestCalculator {
     }
 
     @Test
-    public void test_custome_separator(){
+    public void test_custom_separator(){
         assertThat(this.calculator.add("//;\n1;2")).isEqualToIgnoringCase("3");
         assertThat(this.calculator.add("//sep\n2sep3")).isEqualToIgnoringCase("5");
         assertThat(this.calculator.add("//|\n1|2|3")).isEqualToIgnoringCase("6");
